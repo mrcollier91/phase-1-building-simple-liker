@@ -3,9 +3,24 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+//make error message hidden using exising css for class .hidden 
+const modalMes = document.getElementById('modal')
+modalMes.classList.add('hidden')
 
-
-
+ 
+//add event listener to heart
+document.addEventListener('click', (e) => {
+ if (e.target.classList.value === 'like-glyph'){
+ mimicServerCall()
+ .then((resp) => {
+   e.target.classList.add('activated-heart')
+ })
+ .catch((error) => {
+   console.log('error')
+   modalMes.remove('hidden')
+ }
+ )}
+})
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
